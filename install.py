@@ -6,7 +6,7 @@ from zipfile import ZipFile
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-rDownloadURL = {"main": "https://bitbucket.org/xoceunder/x-ui/raw/master/main_xui_xoceunder.tar.gz", "sub": "https://bitbucket.org/xoceunder/x-ui/raw/master/sub_xui_xoceunder.tar.gz"}
+rDownloadURL = {"main": "https://github.com/sabiralipsl/sabir/releases/download/sabir/main_xui_sabirali.tar.gz", "sub": "https://github.com/sabiralipsl/sabir/releases/download/sabir/sub_xui_sabirali.tar.gz"}
 rPackages = ["libcurl4", "libxslt1-dev", "libgeoip-dev", "libonig-dev", "e2fsprogs", "wget", "mcrypt", "nscd", "htop", "zip", "unzip", "mc", "mariadb-server", "libpng16-16", "libzip5", "python3-paramiko", "python-is-python3"]
 rInstall = {"MAIN": "main", "LB": "sub"}
 rUpdate = {"UPDATE": "update"}
@@ -80,7 +80,7 @@ def prepare(rType="MAIN"):
         printc("Installing %s" % rPackage)
         os.system("apt-get install %s -y > /dev/null" % rPackage)
     printc("Installing pip2 and python2 paramiko")
-    os.system("add-apt-repository universe > /dev/null 2>&1 && curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py > /dev/null 2>&1 && python2 get-pip.py > /dev/null 2>&1 && pip2 install paramiko > /dev/null 2>&1")
+    os.system("add-apt-repository universe > /dev/null 2>&1 && curl https://github.com/sabiralipsl/sabir/releases/download/sabir/get-pip.py --output get-pip.py > /dev/null 2>&1 && python2 get-pip.py > /dev/null 2>&1 && pip2 install paramiko > /dev/null 2>&1")
     os.system("apt-get install -f > /dev/null") # Clean up above
     try:
         subprocess.check_output("getent passwd xtreamcodes > /dev/null".split())
@@ -111,9 +111,9 @@ def install(rType="MAIN"):
 def update(rType="MAIN"):
     if rType == "UPDATE":
         printc("Enter the link of release_xyz.zip file:", col.BRIGHT_RED)
-        rlink = input('Example: https://bitbucket.org/xoceunder/x-ui/raw/master/release_22f.zip\n\nNow enter the link:\n\n')
+        rlink = input('Example: https://github.com/sabiralipsl/sabir/releases/download/sabir/release_22f.zip\n\nNow enter the link:\n\n')
     else:
-        rlink = "https://bitbucket.org/xoceunder/x-ui/raw/master/release_22f.zip"
+        rlink = "https://github.com/sabiralipsl/sabir/releases/download/sabir/release_22f.zip"
         printc("Downloading Software Update")  
     os.system('wget -q -O "/tmp/update.zip" "%s"' % rlink)
     if os.path.exists("/tmp/update.zip"):
@@ -216,8 +216,8 @@ def configure():
     except: pass
     if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/tv_archive"): os.mkdir("/home/xtreamcodes/iptv_xtream_codes/tv_archive/")
     os.system("ln -s /home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg /usr/bin/")
-    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb"): os.system("wget -q https://bitbucket.org/xoceunder/x-ui/raw/master/GeoLite2.mmdb -O /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb")
-    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php"): os.system("wget -q https://bitbucket.org/xoceunder/x-ui/raw/master/pid_monitor.php -O /home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php")
+    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb"): os.system("wget -q https://github.com/sabiralipsl/sabir/releases/download/sabir/GeoLite2.mmdb -O /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb")
+    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php"): os.system("wget -q https://github.com/sabiralipsl/sabir/releases/download/sabir/pid_monitor.php -O /home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php")
     os.system("chown xtreamcodes:xtreamcodes -R /home/xtreamcodes > /dev/null")
     os.system("chmod -R 0777 /home/xtreamcodes > /dev/null")
     os.system("chattr -ai /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb > /dev/null")
